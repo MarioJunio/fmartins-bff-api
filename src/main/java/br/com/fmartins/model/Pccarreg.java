@@ -39,4 +39,93 @@ public class Pccarreg implements Serializable {
 	@Column(name = "VLTOTAL")
 	private BigDecimal valorTotal;
 	
+	@Column(name="DTFECHA")
+	private LocalDate dataFechamento;
+	
+	@Column(name="DESTINO")
+	private String destino;
+	
+	@Column(name="NUMNOTAS")
+	private Long numNotas;
+	
+	@Column(name="CODCAIXA")
+	private Long codCaixa;
+	
+	@Column(name="PERCOM")
+	private double perCom;
+	
+	@Column(name="NUMENT")
+	private Integer numEnt;
+	
+	@Column(name="NUMCID")
+	private Integer numCid;
+	
+	@Column(name="PREVCHEG")
+	private LocalDate prevChegada;
+	
+	@Column(name="DTRETORNO")
+	private LocalDate dataRetorno;
+	
+	@Column(name="CODCONF")
+	private Long codConf;
+	
+	@Column(name="DT_CANCEL")
+	private LocalDate dataCancel;
+	
+	@Column(name="DATAMON")
+	private LocalDate dataMon;
+	
+	@Column(name="CODFUNCMON")
+	private Long codFuncMon;
+	
+	@Column(name="DATAMAPA")
+	private LocalDate dataMapa;
+	
+	@Column(name="CODFUNCMAPA")
+	private Long codFuncMapa;
+	
+	@Column(name="NUMVIASMAPA")
+	private Integer numViasMapa;
+	
+	@Column(name="DTCAIXA")
+	private LocalDate dataCaixa;
+	
+	@Column(name="DTFAT")
+	private LocalDate dataFat;
+	
+	@Column(name="CODFUNCFAT")
+	private Long codFuncFat;
+	
+	@Column(name="CODFUNCCANCEL")
+	private Long codFuncCancel;
+	
+	@Column(name="DATACONF")
+	private LocalDate dataConfirmacao;
+	
+	@Column(name="QTITENS")
+	private BigDecimal qtItens;
+	
+	@Column(name="OBSFATUR")
+	private String observacaoFatur;
+	
+	@Column(name="TIPOCARGA")
+	private String tipoCarga;
+	
+	@Column(name="KMINICIAL")
+	private double kmInicial;
+	
+	@Column(name="KMFINAL")
+	private double kmFinal;
+	
+	@Column(name="DTSAIDAVEICULO")
+	private LocalDate dataSaidaVeiculo;
+	
+	@Column(name="CODROTAPRINC")
+	private BigDecimal codRotaPrincipal;
+	
+	@Column(name="NUMDIARIAS")
+	private BigDecimal numeroDiarias;
+	
+	@Column(name="CODFUNCAJUD")
+	private BigDecimal codFuncaJud;
 }

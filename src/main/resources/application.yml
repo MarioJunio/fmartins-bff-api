@@ -1,6 +1,7 @@
 server:
   port: 8080
 
+
 spring:
   main:
     banner-mode: off
@@ -23,6 +24,9 @@ spring:
     
   flyway:
     enabled: false 
+    
+  jackson:
+    default-property-inclusion: non-null
 
 logging:
   pattern:

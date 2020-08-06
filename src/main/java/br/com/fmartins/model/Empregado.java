@@ -8,8 +8,14 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(schema = "FMARTINS", name = "PCEMPR")
 public class Empregado implements Serializable {
@@ -17,6 +23,7 @@ public class Empregado implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@EqualsAndHashCode.Include
 	private Long matricula;
 	
 	@Column(name="NOME")
@@ -110,7 +117,7 @@ public class Empregado implements Serializable {
 	private String email;
 	
 	@Column(name="FATORCOMISSAO")
-	private BigDecimal fatorComissao;
+	private Double fatorComissao;
 	
 	@Column(name="DTEXPIRASENHA")
 	private LocalDate dtExpiraSenha;
@@ -164,7 +171,7 @@ public class Empregado implements Serializable {
 	private String observacao;
 	
 	@Column(name="PERCVT")
-	private BigDecimal perCvt;
+	private Double perCvt;
 	
 	@Column(name="VLPLANOSAUDE")
 	private BigDecimal vlPlanoSaude;
@@ -173,7 +180,7 @@ public class Empregado implements Serializable {
 	private BigDecimal vlSalFamilia;
 	
 	@Column(name="PERCINSS")
-	private BigDecimal percInss;
+	private Double percInss;
 	
 	@Column(name="VLPENSAOALIMENTICIA")
 	private BigDecimal vlPensaoAlimenticia;
@@ -200,7 +207,7 @@ public class Empregado implements Serializable {
 	private Long codFornec;
 	
 	@Column(name="PERCOMMOT")
-	private BigDecimal perComMot;
+	private Double perComMot;
 	
 	@Column(name="VLFRETEENTREGA")
 	private BigDecimal vlFreteEntrega;
@@ -269,22 +276,22 @@ public class Empregado implements Serializable {
 	private String nomeEmail;
 	
 	@Column(name="PERCMINJUROSMORA")
-	private BigDecimal percMinJurosMora = new BigDecimal(0);
+	private Double percMinJurosMora = 0D;
 	
 	@Column(name="PERCMAXJUROSMORA")
-	private BigDecimal perMaxJurosMora = new BigDecimal(0);
+	private Double perMaxJurosMora = 0D;
 	
 	@Column(name="CODIDIOMA")
 	private String codIdioma = "PT-BR";
 	
 	@Column(name="PERCEXCLIMCRED")
-	private BigDecimal percExcLimCred;
+	private Double percExcLimCred;
 	
 	@Column(name="ENVIAFV")
 	private String enviaFv;
 	
 	@Column(name="PERCREDUZCOMISRCA")
-	private BigDecimal percReduzComisRca;
+	private Double percReduzComisRca;
 	
 	@Column(name="VLSALDOLIMALTCREDITO")
 	private BigDecimal vlSaldoLimAltCredito = new BigDecimal(999999999999D);
@@ -341,7 +348,7 @@ public class Empregado implements Serializable {
 	private Long diasCob;
 	
 	@Column(name="LIMITEDESCONTO561")
-	private BigDecimal LimiteDesconto561;
+	private Double LimiteDesconto561;
 	
 	@Column(name="NUMINSS")
 	private String numInss;
@@ -350,7 +357,7 @@ public class Empregado implements Serializable {
 	private String usaBiometriaMenu = "N";
 	
 	@Column(name="PERCDESC")
-	private BigDecimal percDesc;
+	private Double percDesc;
 	
 	@Column(name="NUMDVCONTA")
 	private String numDvConta;
@@ -365,13 +372,13 @@ public class Empregado implements Serializable {
 	private String tipoComissao;
 	
 	@Column(name="COMISSAOFIXA")
-	private BigDecimal comissaoFixa;
+	private Double comissaoFixa;
 	
 	@Column(name="USAAVISOAUTOMENU")
 	private String usaAvisoAutoMenu = "S";
 	
 	@Column(name="PERCMAXDESCTITULO")
-	private BigDecimal percMaxDescTitulo;
+	private Double percMaxDescTitulo;
 	
 	@Column(name="RESPLIBCADASTRO")
 	private String respLibCadastro;
@@ -467,10 +474,10 @@ public class Empregado implements Serializable {
 	private String cep;
 	
 	@Column(name="PERDESCMAXITEM")
-	private BigDecimal perDescMaxItem;
+	private Double perDescMaxItem;
 	
 	@Column(name="PERDESCMAXRODAPE")
-	private BigDecimal perDescMaxRodape;
+	private Double perDescMaxRodape;
 	
 	@Column(name="LIM_REDUCAOCREDITO")
 	private BigDecimal limReducaoCredito;
@@ -481,18 +488,23 @@ public class Empregado implements Serializable {
 	@Column(name="PERIODO_ALTERACAOCREDITO")
 	private Integer periodoAlteracaoCredito;
 	
+	@Lob
 	@Column(name="DIGITALPOLEGAR")
 	private byte[] digitalPolegar;
-	
+		
+	@Lob
 	@Column(name="DIGITALINDICADOR")
 	private byte[] digitalIndicador;
-	
+		
+	@Lob
 	@Column(name="DIGITALMEDIO")
 	private byte[] digitalMedio;
 	
+	@Lob
 	@Column(name="DIGITALANELAR")
 	private byte[] digitalAnelar;
 	
+	@Lob
 	@Column(name="DIGITALMINIMO")
 	private byte[] digitalMinimo;
 	

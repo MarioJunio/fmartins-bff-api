@@ -9,61 +9,68 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(schema = "FMARTINS", name = "PCTIPOVEICULO")
 public class TipoVeiculo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	private Long codtipoveiculo;
-	
-	@Column(name="DSCTIPOVEICULO")
+	@Column(name = "CODTIPOVEICULO")
+	@EqualsAndHashCode.Include
+	private Long codigo;
+
+	@Column(name = "DSCTIPOVEICULO")
 	private String dscTipoVeiculo;
-	
-	@Column(name="CODPERFILVEICULO")
+
+	@Column(name = "CODPERFILVEICULO")
 	private PerfilVeiculo codPerfilVeiculo;
-	
-	@Column(name="TIPODIARIA")
+
+	@Column(name = "TIPODIARIA")
 	private String tipoDiaria;
-	
-	@Column(name="VLDIARIA")
+
+	@Column(name = "VLDIARIA")
 	private BigDecimal vlDiaria;
-	
-	@Column(name="TIPOTARIFAKGTRANSPORTADO")
+
+	@Column(name = "TIPOTARIFAKGTRANSPORTADO")
 	private String tipoTarifaKgTransportado;
-	
-	@Column(name="VLTARIFAKGTRANSPORTADO")
+
+	@Column(name = "VLTARIFAKGTRANSPORTADO")
 	private BigDecimal vlTarifaKgTranspotado;
-	
-	@Column(name="TIPOTARIFAVOLTRANSPORTADO")
+
+	@Column(name = "TIPOTARIFAVOLTRANSPORTADO")
 	private String tipoTarifaVolTransportado;
-	
-	@Column(name="VLTARIFAVOLTRANSPORTADO")
+
+	@Column(name = "VLTARIFAVOLTRANSPORTADO")
 	private BigDecimal vlTarifaVolTransportado;
-	
-	@Column(name="TIPOTARIFAQTDENTREGA")
+
+	@Column(name = "TIPOTARIFAQTDENTREGA")
 	private String tipoTarifaQtdEntrega;
-	
-	@Column(name="VLTARIFAQTDENTREGA")
+
+	@Column(name = "VLTARIFAQTDENTREGA")
 	private BigDecimal vlTarifaQtdEntrega;
-	
-	@Column(name="PERIODOINIVIGENCIA")
+
+	@Column(name = "PERIODOINIVIGENCIA")
 	private LocalDate periodoIniVigencia;
-	
-	@Column(name="PERIODOFIMVIGENCIA")
+
+	@Column(name = "PERIODOFIMVIGENCIA")
 	private LocalDate periodoFimVigencia;
-	
-	@Column(name="COMISSAOINCIDESOBRE")
+
+	@Column(name = "COMISSAOINCIDESOBRE")
 	private String comissaoIncideSobre;
-	
-	@Column(name="PONDERACAOTARIFAPESO")
-	private BigDecimal poderacaoTarifaPeso;
-	
-	@Column(name="PONDERACAOTARIFAVOLUME")
-	private BigDecimal poderacaoTarifaVolume;
-	
-	@Column(name="PONDERACAOTARIFAENTREGA")
-	private BigDecimal ponderacaoTarifaEntrega;
+
+	@Column(name = "PONDERACAOTARIFAPESO")
+	private Double poderacaoTarifaPeso;
+
+	@Column(name = "PONDERACAOTARIFAVOLUME")
+	private Double poderacaoTarifaVolume;
+
+	@Column(name = "PONDERACAOTARIFAENTREGA")
+	private Double ponderacaoTarifaEntrega;
 
 }

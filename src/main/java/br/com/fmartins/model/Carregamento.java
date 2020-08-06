@@ -2,16 +2,21 @@ package br.com.fmartins.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(schema = "FMARTINS", name = "PCCARREG")
 public class Carregamento implements Serializable {
@@ -19,7 +24,8 @@ public class Carregamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Long numcar;
+	@EqualsAndHashCode.Include
+	private BigInteger numcar;
 	
 	@Column(name = "DTSAIDA")
 	private LocalDate dataSaida;
@@ -67,7 +73,7 @@ public class Carregamento implements Serializable {
 	private LocalDate dataRetorno;
 	
 	@Column(name="CODCONF")
-	private Long codConf;
+	private BigInteger codConf;
 	
 	@Column(name="DT_CANCEL")
 	private LocalDate dataCancel;
@@ -76,13 +82,13 @@ public class Carregamento implements Serializable {
 	private LocalDate dataMon;
 	
 	@Column(name="CODFUNCMON")
-	private Long codFuncMon;
+	private BigInteger codFuncMon;
 	
 	@Column(name="DATAMAPA")
 	private LocalDate dataMapa;
 	
 	@Column(name="CODFUNCMAPA")
-	private Long codFuncMapa;
+	private BigInteger codFuncMapa;
 	
 	@Column(name="NUMVIASMAPA")
 	private Integer numViasMapa;
@@ -94,16 +100,16 @@ public class Carregamento implements Serializable {
 	private LocalDate dataFat;
 	
 	@Column(name="CODFUNCFAT")
-	private Long codFuncFat;
+	private BigInteger codFuncFat;
 	
 	@Column(name="CODFUNCCANCEL")
-	private Long codFuncCancel;
+	private BigInteger codFuncCancel;
 	
 	@Column(name="DATACONF")
 	private LocalDate dataConfirmacao;
 	
 	@Column(name="QTITENS")
-	private BigDecimal qtItens;
+	private Integer qtItens;
 	
 	@Column(name="OBSFATUR")
 	private String observacaoFatur;
@@ -112,22 +118,22 @@ public class Carregamento implements Serializable {
 	private String tipoCarga;
 	
 	@Column(name="KMINICIAL")
-	private double kmInicial;
+	private Double kmInicial;
 	
 	@Column(name="KMFINAL")
-	private double kmFinal;
+	private Double kmFinal;
 	
 	@Column(name="DTSAIDAVEICULO")
 	private LocalDate dataSaidaVeiculo;
 	
 	@Column(name="CODROTAPRINC")
-	private BigDecimal codRotaPrincipal;
+	private Integer codRotaPrincipal;
 	
 	@Column(name="NUMDIARIAS")
-	private BigDecimal numeroDiarias;
+	private Integer numeroDiarias;
 	
 	@Column(name="CODFUNCAJUD")
-	private BigDecimal codFuncaJud;
+	private Integer codFuncaJud;
 	
 	@Column(name="PAGCOMMOTMIN")
 	private String pagComMotMin;
@@ -142,19 +148,19 @@ public class Carregamento implements Serializable {
 	private Integer minutoFecha;
 	
 	@Column(name="NUMCAROL")
-	private BigDecimal numCarol;
+	private Integer numCarol;
 	
 	@Column(name="CONHECFRETE")
 	private String conhecFrete;
 	
 	@Column(name="NUMCAROPERLOG")
-	private BigDecimal numCarOperLog;
+	private Integer numCarOperLog;
 	
 	@Column(name="DTFECHACOMISSMOT")
 	private LocalDate dtFechaComissMot;
 	
 	@Column(name="QTCOMBUSTIVEL")
-	private BigDecimal qtCombustivel;
+	private Double qtCombustivel;
 	
 	@Column(name="BALCAOBAIXADO")
 	private String balcaoBaixado;
@@ -184,7 +190,7 @@ public class Carregamento implements Serializable {
 	private Integer minutoMon;
 	
 	@Column(name="QTCAIXAS")
-	private BigDecimal qtCaixas;
+	private Integer qtCaixas;
 	
 	@Column(name="NUMCARWMS")
 	private Long numCarWms;
@@ -208,13 +214,13 @@ public class Carregamento implements Serializable {
 	private Long numLancDiaria;
 	
 	@Column(name="NUMCARBROKER")
-	private BigDecimal numCarBroker;
+	private Integer numCarBroker;
 	
 	@Column(name="PERCOMTERC")
-	private BigDecimal perComTerc;
+	private Double perComTerc;
 	
 	@Column(name="PERCOMAJUD")
-	private BigDecimal perComAjud;
+	private Double perComAjud;
 	
 	@Column(name="TIPOCOMISSAO")
 	private String tipoComissao;
@@ -229,10 +235,10 @@ public class Carregamento implements Serializable {
 	private String lacre;
 	
 	@Column(name="GEOVOLUMETOTAL")
-	private BigDecimal GeoVolumeTotal;
+	private Long geoVolumeTotal;
 	
 	@Column(name="FROTA_PESO")
-	private BigDecimal frotaPeso;
+	private Integer frotaPeso;
 	
 	@Column(name="DATACONFFIM")
 	private LocalDate dataConfFim;
@@ -250,22 +256,22 @@ public class Carregamento implements Serializable {
 	private String codFilialSaida;
 	
 	@Column(name="CODFUNCMAPACARAGRUPADO")
-	private BigDecimal codFuncMapaCarAgrupado;
+	private BigInteger codFuncMapaCarAgrupado;
 	
 	@Column(name="DATAHORAMAPACARAGRUPADO")
 	private LocalDate dataHoraMapaCarAgrupado;
 	
 	@Column(name="NUMCARAGRUPADO")
-	private BigDecimal numCarAgrupado;
+	private Integer numCarAgrupado;
 	
 	@Column(name="NUMVIASCARAGRUPADO")
 	private Integer numViasCarAgrupado;
 	
 	@Column(name="CODMOTORISTACARAGRUPADO")
-	private BigDecimal codMotoristaCarAgrupado;
+	private Integer codMotoristaCarAgrupado;
 	
 	@Column(name="CODVEICULCARAGRUPADO")
-	private BigDecimal codVeiculoCarAgrupado;
+	private Integer codVeiculoCarAgrupado;
 	
 	@Column(name="DATACARAGRUPADO")
 	private LocalDate dataCarAgrupado;
@@ -286,10 +292,10 @@ public class Carregamento implements Serializable {
 	private LocalDate dataFechaComAjud;
 	
 	@Column(name="CODMOTTRANSBORDO")
-	private BigDecimal codMotTransbordo;
+	private Integer codMotTransbordo;
 	
 	@Column(name="CODAJUDTRANSBORDO")
-	private BigDecimal codAjudTransbordo;
+	private BigInteger codAjudTransbordo;
 	
 	@Column(name="OBSDESTINOAGRUP")
 	private String obsDestinoAgrupado;
@@ -301,7 +307,7 @@ public class Carregamento implements Serializable {
 	private String obsAcerto;
 	
 	@Column(name="PERCFRETERETIDO")
-	private BigDecimal percFreteRetido;
+	private Double percFreteRetido;
 	
 	@Column(name="VLFIXO")
 	private BigDecimal vlFixo;
@@ -310,31 +316,31 @@ public class Carregamento implements Serializable {
 	private BigDecimal vlPed;
 	
 	@Column(name="PERGRIS")
-	private BigDecimal perGris;
+	private Double perGris;
 	
 	@Column(name="VALORKG")
-	private double valorKg;
+	private BigDecimal valorKg;
 	
 	@Column(name="CODFUNCCONF")
-	private BigDecimal codFuncConf;
+	private BigInteger codFuncConf;
 	
 	@Column(name="LANCARDESPDESCFINAUTOMATIC")
 	private String lancarDespDescFinAutomatico = "N";
 	
 	@Column(name="CODFUNCSAIDACAR")
-	private BigDecimal codFuncSaidaCar;
+	private Integer codFuncSaidaCar;
 	
 	@Column(name="CODFUNCRETORNOCAR")
-	private BigDecimal codFuncRetornoCar;
+	private Integer codFuncRetornoCar;
 	
 	@Column(name="SEGUNDOMON")
-	private Integer SegundoMon;
+	private Short segundoMon;
 	
 	@Column(name="CODVEICULO1")
-	private BigDecimal codVeiculo01;
+	private Integer codVeiculo01;
 	
 	@Column(name="CODVEICULO2")
-	private BigDecimal codVeiculo02;
+	private Integer codVeiculo02;
 	
 	@Column(name="NUMONUCARGA")
 	private String numOnuCarga;
@@ -358,10 +364,10 @@ public class Carregamento implements Serializable {
 	private Integer segundosFecha;
 	
 	@Column(name="CODFUNCAJUD2")
-	private BigDecimal codFuncaJud2;
+	private Integer codFuncaJud2;
 	
 	@Column(name="CODFUNCAJUD3")
-	private BigDecimal codFuncaoJud3;
+	private Integer codFuncaoJud3;
 	
 	@Column(name="DTEXPORTACAO")
 	private LocalDate dataExportacao;
@@ -372,23 +378,25 @@ public class Carregamento implements Serializable {
 	@Column(name="IDINTEGRACAOMYFROTA")
 	private String idIntegracaoMyFrota;
 	
-	@Column(name="CODTIPOVEICULO")
-	private Integer codTipoVeiculo;
+	@ManyToOne
+	@JoinColumn(name = "CODTIPOVEICULO")
+	private TipoVeiculo codTipoVeiculo;
 	
-	@Column(name="CODPERFILVEICULO")
-	private Integer codPerfilVeiculo;
+	@ManyToOne
+	@JoinColumn(name = "CODPERFILVEICULO")
+	private PerfilVeiculo codPerfilVeiculo;
 	
 	@Column(name="TIPOCALCULOCOMISSAOFRETISTA")
 	private String tipoCalculoComissaoFretista;
 	
 	@Column(name="CODFUNTIPOCALCCOMISSAOFRETISTA")
-	private BigDecimal codFunTipoCalcComissaoFretista;
+	private BigInteger codFunTipoCalcComissaoFretista;
 	
 	@Column(name="LIBERA_RETAGUARDA")
 	private String liberaRetaguarda;
 	
 	@Column(name="CODFUNCLIBEROURET")
-	private BigDecimal codFuncLiberouRet;
+	private BigInteger codFuncLiberouRet;
 	
 	@Column(name="DATALIBEROURET")
 	private LocalDate dataLiberouRet;
@@ -400,7 +408,7 @@ public class Carregamento implements Serializable {
 	private String sbFilial;
 	
 	@Column(name="CODFUNCFECHA")
-	private BigDecimal codFuncFecha;
+	private BigInteger codFuncFecha;
 	
 	@Column(name="SB_DTABAST")
 	private LocalDate sbDataBast;
@@ -430,10 +438,10 @@ public class Carregamento implements Serializable {
 	private double numOnda;
 	
 	@Column(name="ORDEMSEP")
-	private BigDecimal ordemSep;
+	private Integer ordemSep;
 	
 	@Column(name="ORDEMCONF")
-	private BigDecimal ordemConf;
+	private Integer ordemConf;
 	
 	@Column(name="DTMXSALTER")
 	private LocalDate dtMxSalter;

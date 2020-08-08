@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fmartins.resource.dto.EmpregadoDTO;
+import br.com.fmartins.resource.dto.response.EmpregadoDTO;
 
 @RestController
 @RequestMapping("/empregados")

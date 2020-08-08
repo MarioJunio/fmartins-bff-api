@@ -25,7 +25,7 @@ public class Carregamento implements Serializable {
 
 	@Id
 	@EqualsAndHashCode.Include
-	private BigInteger numcar;
+	private BigInteger numCar;
 	
 	@Column(name = "DTSAIDA")
 	private LocalDate dataSaida;
@@ -34,7 +34,7 @@ public class Carregamento implements Serializable {
 	private BigInteger codigoMotorista;
 	
 	@Column(name = "CODVEICULO")
-	private Integer codigoVeiculo;
+	private BigInteger codigoVeiculo;
 	
 	@Column(name = "TOTPESO")
 	private Double pesoTotal;
@@ -61,10 +61,10 @@ public class Carregamento implements Serializable {
 	private double perCom;
 	
 	@Column(name="NUMENT")
-	private Integer numEnt;
+	private BigInteger numEnt;
 	
 	@Column(name="NUMCID")
-	private Integer numCid;
+	private BigInteger numCid;
 	
 	@Column(name="PREVCHEG")
 	private LocalDate prevChegada;
@@ -109,7 +109,7 @@ public class Carregamento implements Serializable {
 	private LocalDate dataConfirmacao;
 	
 	@Column(name="QTITENS")
-	private Integer qtItens;
+	private BigInteger qtItens;
 	
 	@Column(name="OBSFATUR")
 	private String observacaoFatur;
@@ -127,10 +127,10 @@ public class Carregamento implements Serializable {
 	private LocalDate dataSaidaVeiculo;
 	
 	@Column(name="CODROTAPRINC")
-	private Integer codRotaPrincipal;
+	private BigInteger codRotaPrincipal;
 	
 	@Column(name="NUMDIARIAS")
-	private Integer numeroDiarias;
+	private BigInteger numeroDiarias;
 	
 	@Column(name="CODFUNCAJUD")
 	private BigInteger codFuncaJud;
@@ -271,7 +271,7 @@ public class Carregamento implements Serializable {
 	private BigInteger codMotoristaCarAgrupado;
 	
 	@Column(name="CODVEICULCARAGRUPADO")
-	private Integer codVeiculoCarAgrupado;
+	private BigInteger codVeiculoCarAgrupado;
 	
 	@Column(name="DATACARAGRUPADO")
 	private LocalDate dataCarAgrupado;
@@ -337,10 +337,10 @@ public class Carregamento implements Serializable {
 	private Short segundoMon;
 	
 	@Column(name="CODVEICULO1")
-	private Integer codVeiculo01;
+	private BigInteger codVeiculo01;
 	
 	@Column(name="CODVEICULO2")
-	private Integer codVeiculo02;
+	private BigInteger codVeiculo02;
 	
 	@Column(name="NUMONUCARGA")
 	private String numOnuCarga;
@@ -361,7 +361,7 @@ public class Carregamento implements Serializable {
 	private String pontoFugorCarga;
 	
 	@Column(name="SEGUNDOSFECHA")
-	private Integer segundosFecha;
+	private Short segundosFecha;
 	
 	@Column(name="CODFUNCAJUD2")
 	private BigInteger codFuncaJud2;
@@ -414,19 +414,19 @@ public class Carregamento implements Serializable {
 	private LocalDate sbDataBast;
 	
 	@Column(name="SB_SELWMS")
-	private Integer sbSelwms = 0;
+	private Short sbSelwms = 0;
 	
 	@Column(name="SB_DTWMS")
 	private LocalDate sbDtwms;
 	
 	@Column(name="SB_SELABAST")
-	private Integer sbSelaBast = 0;
+	private Short sbSelaBast = 0;
 	
 	@Column(name="SB_SEQABAST")
-	private Long sbSeqAbast = 0L;
+	private BigInteger sbSeqAbast = BigInteger.ZERO;
 	
 	@Column(name="SB_SEQHORACARGA")
-	private Long sbSeqHoraCarga = 0L;
+	private BigInteger sbSeqHoraCarga = BigInteger.ZERO;
 	
 	@Column(name="OBSFRETE")
 	private String obsFrete;
@@ -438,16 +438,16 @@ public class Carregamento implements Serializable {
 	private double numOnda;
 	
 	@Column(name="ORDEMSEP")
-	private Integer ordemSep;
+	private BigInteger ordemSep;
 	
 	@Column(name="ORDEMCONF")
-	private Integer ordemConf;
+	private BigInteger ordemConf;
 	
 	@Column(name="DTMXSALTER")
 	private LocalDate dtMxSalter;
 	
 	@Column(name="CODVEICULOCARREG")
-	private Integer codVeiculoCarreg;
+	private BigInteger codVeiculoCarreg;
 	
 	@Column(name="IDSOFITVIEW")
 	private String idSofitView;

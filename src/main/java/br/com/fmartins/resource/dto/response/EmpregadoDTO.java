@@ -1,4 +1,4 @@
-package br.com.fmartins.resource.dto;
+package br.com.fmartins.resource.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

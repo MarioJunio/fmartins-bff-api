@@ -33,7 +33,7 @@ public class CarregamentoResource {
 	@GetMapping("/agrupados-nao-finalizados/{matricula}")
 	public ResponseEntity<List<CarregamentoAgrupadoNãoFinalizadoDTO>> pesquisarCargasNaoFinalizadasPorUsuario(
 			@PathVariable String matricula) {
-
+		return null;
 	}
 
 	@PutMapping("/iniciar-carga")

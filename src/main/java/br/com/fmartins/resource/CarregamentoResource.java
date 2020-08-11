@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fmartins.resource.dto.request.FinalizarCargaDTO;
-import br.com.fmartins.resource.dto.request.IniciarCargaDTO;
+import br.com.fmartins.resource.dto.request.FinalizarCarregamentoDTO;
+import br.com.fmartins.resource.dto.request.IniciarCarregamentoDTO;
 import br.com.fmartins.resource.dto.response.CarregamentoAgrupadoNaoFinalizadoDTO;
 import br.com.fmartins.resource.dto.response.CarregamentoDTO;
 import br.com.fmartins.service.CarregamentoService;
@@ -45,7 +45,7 @@ public class CarregamentoResource {
 	@GetMapping("/agrupados-nao-finalizados/{matricula}")
 	public ResponseEntity<List<CarregamentoAgrupadoNaoFinalizadoDTO>> pesquisarCargasNaoFinalizadasPorUsuario(
 			@PathVariable BigInteger matricula) {
-		
+
 		log.info("/agrupados-nao-finalizados/{}", matricula);
 
 		List<CarregamentoAgrupadoNaoFinalizadoDTO> carregamentosAgrupados = carregamentoService
@@ -55,17 +55,21 @@ public class CarregamentoResource {
 				: ResponseEntity.notFound().build();
 	}
 
-	@PutMapping("/iniciar-carga/{numCarregamento}")
-	public void iniciarCarga(@PathVariable BigInteger numCarregamento, @RequestBody IniciarCargaDTO payload) {
-		log.info("/iniciar-carga/{}", numCarregamento);
+	@PutMapping("/iniciar/{numCarregamento}")
+	public void iniciarCarregamento(@PathVariable BigInteger numCarregamento,
+			@RequestBody IniciarCarregamentoDTO payload) {
+		log.info("/iniciar/{}", numCarregamento);
 		log.info("{}", payload);
 
-		carregamentoService.atualizar(numCarregamento, payload);
+		carregamentoService.iniciar(numCarregamento, payload);
 	}
 
-	@PutMapping("/finalizar-carga/{numCarregamento}")
-	public void finalizarCarga(@PathVariable BigInteger numCarregamento,
-			@RequestBody FinalizarCargaDTO finalizarCargaDTO) {
+	@PutMapping("/finalizar")
+	public void finalizarCarga(@RequestBody FinalizarCarregamentoDTO payload) {
+		log.info("/finalizar");
+		log.info("{}", payload);
+
+		carregamentoService.finalizar(payload);
 
 	}
 }

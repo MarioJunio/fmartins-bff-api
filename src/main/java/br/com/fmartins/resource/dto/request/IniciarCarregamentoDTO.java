@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class IniciarCargaDTO {
+public class IniciarCarregamentoDTO {
 
 	private LocalDate dataSaida;
 	private BigInteger codVeiculo;

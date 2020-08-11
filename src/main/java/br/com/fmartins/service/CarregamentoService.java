@@ -2,14 +2,18 @@ package br.com.fmartins.service;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.fmartins.constants.Consts;
 import br.com.fmartins.repository.CarregamentoRepository;
-import br.com.fmartins.resource.dto.request.IniciarCargaDTO;
+import br.com.fmartins.resource.dto.request.FinalizarCarregamentoDTO;
+import br.com.fmartins.resource.dto.request.IniciarCarregamentoDTO;
 import br.com.fmartins.resource.dto.response.CarregamentoAgrupadoNaoFinalizadoDTO;
 import br.com.fmartins.resource.dto.response.CarregamentoDTO;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +23,27 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CarregamentoService {
 
+	private final Environment env;
+
 	private final CarregamentoRepository carregamentoRepository;
+
+	public void iniciar(BigInteger numCarregamento, final IniciarCarregamentoDTO payload) {
+		
+		// obtem o proximo valor sequencia
+		Long nextSeqNumCarAgrupado = Arrays.asList(env.getActiveProfiles()).contains(Consts.PROFILE_QA)
+				? carregamentoRepository.getNextNumCarAgrupadorQA()
+				: carregamentoRepository.getNextNumCarAgrupador();
+
+		payload.setNumCarAgrupado(BigInteger.valueOf(nextSeqNumCarAgrupado));
+
+		carregamentoRepository.iniciar(payload.getDataSaida(), payload.getCodVeiculo(), payload.getKmInicial(),
+				payload.getMatricula(), payload.getNumCarAgrupado(), numCarregamento);
+	}
+
+	public void finalizar(final FinalizarCarregamentoDTO payload) {
+		carregamentoRepository.finalizar(payload.getNumCarAgrupado(), payload.getKmFinal(), payload.getDataRetorno(),
+				payload.getQtCombustivel());
+	}
 
 	public boolean verificarLancamento(BigInteger numCarregamento) {
 
@@ -33,12 +57,6 @@ public class CarregamentoService {
 
 	public Optional<CarregamentoDTO> pesquisar(BigInteger numCarregamento) {
 		return carregamentoRepository.pesquisar(numCarregamento);
-	}
-
-	public void atualizar(BigInteger numCarregamento, IniciarCargaDTO iniciarCargaDTO) {
-		carregamentoRepository.atualizar(iniciarCargaDTO.getDataSaida(), iniciarCargaDTO.getCodVeiculo(),
-				iniciarCargaDTO.getKmInicial(), iniciarCargaDTO.getMatricula(), iniciarCargaDTO.getNumCarAgrupado(),
-				numCarregamento);
 	}
 
 	public List<CarregamentoAgrupadoNaoFinalizadoDTO> pesquisarCarregamentosAgrupados(

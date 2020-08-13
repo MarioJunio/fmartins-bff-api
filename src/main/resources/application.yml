@@ -14,10 +14,10 @@ spring:
       ddl-auto: none
       
   datasource:
-    url: 
-    username: 
-    password: 
-    driver-class-name: 
+    url: jdbc:oracle:thin:@10.1.1.210:1521:xe
+    username: FMARTINS
+    password: fmartins
+    driver-class-name: oracle.jdbc.driver.OracleDriver
     hiraki:
       connection-timeout: 60000
       maximum-pool-size: 5

@@ -11,4 +11,12 @@ public class EmpregadoDTO {
 
 	private Long matricula;
 	private String nomeGuerra;
+	private Long codVeiculo;
+	private String placaVeiculo;
+
+	public EmpregadoDTO(Long matricula, String nomeGuerra, Long codVeiculo) {
+		this.matricula = matricula;
+		this.nomeGuerra = nomeGuerra;
+		this.codVeiculo = codVeiculo;
+	}
 }

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.fmartins.constants.Consts;
+import br.com.fmartins.exception.CarregamentoLancadoException;
+import br.com.fmartins.exception.CarregamentoNaoEncontradoException;
 import br.com.fmartins.repository.CarregamentoRepository;
 import br.com.fmartins.resource.dto.request.FinalizarCarregamentoDTO;
 import br.com.fmartins.resource.dto.request.IniciarCarregamentoDTO;
@@ -28,7 +30,7 @@ public class CarregamentoService {
 	private final CarregamentoRepository carregamentoRepository;
 
 	public void iniciar(BigInteger numCarregamento, final IniciarCarregamentoDTO payload) {
-		
+
 		// obtem o proximo valor sequencia
 		Long nextSeqNumCarAgrupado = Arrays.asList(env.getActiveProfiles()).contains(Consts.PROFILE_QA)
 				? carregamentoRepository.getNextNumCarAgrupadorQA()
@@ -41,8 +43,8 @@ public class CarregamentoService {
 	}
 
 	public void finalizar(final FinalizarCarregamentoDTO payload) {
-		carregamentoRepository.finalizar(payload.getNumCarAgrupado(), payload.getKmFinal(), payload.getDataRetorno(),
-				payload.getQtCombustivel());
+		carregamentoRepository.finalizar(payload.getNumCarregamentosAgrupado(), payload.getKmFinal(),
+				payload.getDataRetorno(), payload.getQtCombustivel());
 	}
 
 	public boolean verificarLancamento(BigInteger numCarregamento) {
@@ -56,7 +58,17 @@ public class CarregamentoService {
 	}
 
 	public Optional<CarregamentoDTO> pesquisar(BigInteger numCarregamento) {
-		return carregamentoRepository.pesquisar(numCarregamento);
+
+		Optional<CarregamentoDTO> opCarregamento = carregamentoRepository.pesquisar(numCarregamento);
+
+		opCarregamento.orElseThrow(() -> new CarregamentoNaoEncontradoException());
+
+		if (verificarLancamento(numCarregamento)) {
+			throw new CarregamentoLancadoException();
+		}
+
+		return opCarregamento;
+
 	}
 
 	public List<CarregamentoAgrupadoNaoFinalizadoDTO> pesquisarCarregamentosAgrupados(

@@ -13,6 +13,6 @@ import br.com.fmartins.resource.dto.response.EmpregadoDTO;
 @Repository
 public interface EmpregadoRepository extends CrudRepository<Empregado, Long> {
 
-	@Query("SELECT new br.com.fmartins.resource.dto.response.EmpregadoDTO(e.matricula, e.nomeGuerra) FROM Empregado e WHERE e.matricula = :matricula")
+	@Query("SELECT new br.com.fmartins.resource.dto.response.EmpregadoDTO(e.matricula, e.nomeGuerra, e.codVeiculo) FROM Empregado e WHERE e.matricula = :matricula")
 	Optional<EmpregadoDTO> buscarPorMatricula(@Param("matricula") Long matricula);
 }

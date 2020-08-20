@@ -2,6 +2,7 @@ package br.com.fmartins.repository;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,14 +34,14 @@ public interface CarregamentoRepository extends CrudRepository<Carregamento, Lon
 
 	@Modifying
 	@Query("UPDATE Carregamento c SET c.dataSaidaVeiculo = :dataSaida, c.codVeiculoCarAgrupado = :codVeiculo, c.kmInicial = :kmInicial, c.codMotoristaCarAgrupado = :matricula, c.numCarAgrupado = :numCarAgrupado WHERE c.numCar = :numCar")
-	void iniciar(@Param("dataSaida") LocalDate dataSaida, @Param("codVeiculo") BigInteger codVeiculo,
+	void iniciar(@Param("dataSaida") LocalDateTime dataSaida, @Param("codVeiculo") BigInteger codVeiculo,
 			@Param("kmInicial") Double kmInicial, @Param("matricula") BigInteger matricula,
 			@Param("numCarAgrupado") BigInteger numCarAgrupado, @Param("numCar") BigInteger numCarregamento);
 
 	@Modifying
-	@Query("UPDATE Carregamento c SET c.kmFinal = :kmFinal, c.dataRetorno = :dataRetorno, c.qtCombustivel = :qtCombustivel WHERE c.numCarAgrupado = :numCarAgrupado")
-	void finalizar(@Param("numCarAgrupado") BigInteger numCarAgrupado, @Param("kmFinal") Double kmFinal,
-			@Param("dataRetorno") LocalDate dataRetorno, @Param("qtCombustivel") Double qtCombustivel);
+	@Query("UPDATE Carregamento c SET c.kmFinal = :kmFinal, c.dataRetorno = :dataRetorno, c.qtCombustivel = :qtCombustivel WHERE c.numCarAgrupado in (:numCarregamentosAgrupado)")
+	void finalizar(@Param("numCarregamentosAgrupado") List<BigInteger> numCarregamentosAgrupado, @Param("kmFinal") Double kmFinal,
+			@Param("dataRetorno") LocalDateTime dataRetorno, @Param("qtCombustivel") Double qtCombustivel);
 
 	@Query(value = "SELECT FMARTINS.PCCARREG_DFSEQCARAGRUP FROM dual", nativeQuery = true)
 	Long getNextNumCarAgrupador();

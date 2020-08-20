@@ -28,15 +28,9 @@ public class CarregamentoResource {
 
 	private final CarregamentoService carregamentoService;
 
-	@GetMapping("/verificar-lancamento/{numCarregamento}")
-	public ResponseEntity<Boolean> verificarLancamento(@PathVariable BigInteger numCarregamento) {
-		boolean isCarregamentoIniciado = carregamentoService.verificarLancamento(numCarregamento);
-
-		return isCarregamentoIniciado ? ResponseEntity.ok().body(true) : ResponseEntity.notFound().build();
-	}
-
 	@GetMapping("/{numCarregamento}")
 	public ResponseEntity<CarregamentoDTO> pesquisar(@PathVariable BigInteger numCarregamento) {
+
 		Optional<CarregamentoDTO> opCarregamento = carregamentoService.pesquisar(numCarregamento);
 
 		return opCarregamento.isPresent() ? ResponseEntity.ok(opCarregamento.get()) : ResponseEntity.notFound().build();

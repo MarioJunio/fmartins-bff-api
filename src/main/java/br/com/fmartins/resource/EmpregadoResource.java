@@ -1,7 +1,5 @@
 package br.com.fmartins.resource;
 
-import java.util.Optional;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +19,7 @@ public class EmpregadoResource {
 	
 	@GetMapping("/{matricula}")
 	public ResponseEntity<EmpregadoDTO> pesquisar(@PathVariable Long matricula) {
-		Optional<EmpregadoDTO> opEmpregadoDTO = empregadoService.pesquisar(matricula);
-		
-		return opEmpregadoDTO.isPresent() ? ResponseEntity.ok(opEmpregadoDTO.get()) : ResponseEntity.notFound().build();
+		return ResponseEntity.ok(empregadoService.pesquisar(matricula));
 	}
 
 }

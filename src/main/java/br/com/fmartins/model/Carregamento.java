@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -71,7 +72,7 @@ public class Carregamento implements Serializable {
 	private LocalDate prevChegada;
 	
 	@Column(name="DTRETORNO")
-	private LocalDate dataRetorno;
+	private LocalDateTime dataRetorno;
 	
 	@Column(name="CODCONF")
 	private BigInteger codConf;
@@ -125,7 +126,7 @@ public class Carregamento implements Serializable {
 	private Double kmFinal;
 	
 	@Column(name="DTSAIDAVEICULO")
-	private LocalDate dataSaidaVeiculo;
+	private LocalDateTime dataSaidaVeiculo;
 	
 	@Column(name="CODROTAPRINC")
 	private BigInteger codRotaPrincipal;

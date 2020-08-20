@@ -1,7 +1,8 @@
 package br.com.fmartins.resource.dto.request;
 
 import java.math.BigInteger;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,7 @@ import lombok.Data;
 public class FinalizarCarregamentoDTO {
 	
 	private Double kmFinal;
-	private LocalDate dataRetorno;
+	private LocalDateTime dataRetorno;
 	private Double qtCombustivel;
-	private BigInteger numCarAgrupado;
+	private List<BigInteger> numCarregamentosAgrupado;
 }

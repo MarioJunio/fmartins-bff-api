@@ -1,7 +1,7 @@
 package br.com.fmartins.resource.dto.response;
 
 import java.math.BigInteger;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +18,7 @@ public class CarregamentoDTO {
 	private String destino;
 	private Double pesoTotal;
 	private Double volumeTotal;
-	private LocalDate dataSaidaVeiculo;
+	private LocalDateTime dataSaidaVeiculo;
 	private BigInteger codVeiculoCarAgrupado;
 	private Double kmInicial;
 	private BigInteger codMotoristaCarAgrupado;

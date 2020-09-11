@@ -7,10 +7,6 @@ pipeline {
 
             steps {
                 echo "Fazendo build do projeto..."
-                
-                withMaven(maven : 'maven') {
-                    sh 'mvn clean package'
-                }
             }
         }
 

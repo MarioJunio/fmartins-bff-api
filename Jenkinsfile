@@ -14,9 +14,7 @@ pipeline {
                 sh 'java -version'
                 sh 'mvn -v'
 
-                withMaven(maven : 'maven') {
-                    sh 'mvn clean package'
-                }
+                sh 'mvn clean package'
             }
         }
 

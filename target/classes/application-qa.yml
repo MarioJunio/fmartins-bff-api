@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+  datasource:
+    url: jdbc:h2:mem:testdb 
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+     
+  application:
+    name: fmartins-api
+   
+  flyway:
+    enabled: true
+    
+  jackson:
+    default-property-inclusion: non-null
+    
+  h2:
+    console:
+      enabled: true
+      path: /h2-console

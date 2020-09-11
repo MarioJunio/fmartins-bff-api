@@ -6,7 +6,8 @@ pipeline {
         stage("build") {
 
             steps {
-                echo "Fazendo build do projeto..."
+                sh 'java -version'
+                sh 'mvn -v'
 
                 withMaven(maven : 'maven') {
                     sh 'mvn clean package'

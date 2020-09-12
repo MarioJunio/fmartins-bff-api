@@ -5,10 +5,6 @@ pipeline {
 
         stage("build") {
 
-            tools {
-                jdk "jdk-11"
-            }
-
             steps {
                 sh 'java -version'
 

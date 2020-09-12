@@ -1,18 +1,16 @@
 pipeline {
     agent any
 
-    tools { 
-        maven 'maven' 
-        jdk 'jdk-11' 
-    }
-
     stages {
 
         stage("build") {
 
+            tools {
+                jdk "jdk-11"
+            }
+
             steps {
                 sh 'java -version'
-                sh 'mvn -v'
 
                 sh 'mvn clean package'
             }

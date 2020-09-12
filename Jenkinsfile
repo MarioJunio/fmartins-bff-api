@@ -17,14 +17,14 @@ pipeline {
         stage("test") {
 
             steps  {
-                echo "Fazendo test do projeto..."
+                sh 'mvn test'
             }
         }
 
         stage("deploy") {
 
             steps {
-                echo "Realizando deploy na aws..."
+                echo "Implementar deploy na AWS invocando o terraform"
             }
         }
     }
